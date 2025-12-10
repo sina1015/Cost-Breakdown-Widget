@@ -76,8 +76,8 @@
                         <td class="service-column">{{ formatDate(workorderLabour.startTime) || '---' }}</td>
                         <td class="service-column">{{ formatDate(workorderLabour.endTime) || '---' }}</td>
                         <td class="service-column">{{ formatDuration(workorderLabour.duration) || '---' }}</td>
-                        <td class="service-column">{ '---' }</td>
-                        <td class="service-column1">{ '---' }</td>
+                        <td class="service-column">{{ workorderLabour.rateValue || '---' }}</td>
+                        <td class="service-column1">{{ workorderLabour.totalAmount.currencyValue || '---' }}</td>
                     </tr>
                 </tbody>
             </table>
