@@ -25,7 +25,7 @@
  
         <div v-else-if="items.length !=0 || items1.length !=0 || items3.length !=0  ">   
         <!-- Service Cost Section -->
-        <!-- <div v-if="items.length !== 0">
+        <div v-if="items.length !== 0">
             <div class="headingvalues"><b>Service Cost</b></div>
             <table class="custom-table">
                 <thead>
@@ -54,7 +54,7 @@
                 </tbody>
             </table>
             
-        </div> -->
+        </div>
 
         <!-- Labour Cost Section -->
         <div v-if="items1.length !== 0">
@@ -196,21 +196,21 @@
                 });
             },
             methods: {
-                // async totalCost(input) {
-                //     console.log("logger: ", input)
-                //     try {
-                //         let { data } = await window.facilioApp.request.invokeFacilioAPI(`/v3/unrelated/workorder/fetchAll/workorderService?moduleName=workorderService&viewName=all&filters=%7B%22parentId%22%3A%7B%22operatorId%22%3A9%2C%22value%22%3A%5B%22` + input + `%22%5D%7D%7D&page=1&perPage=5&force=false`, {
-                //             method: 'GET'
-                //         });
-                //         if (data != null) {
-                //             console.log("res", data);
-                //             this.items = data.workorderService || [];
-                //             console.log("items", this.items);
-                //         }
-                //     } catch(error) {
-                //         console.error('Error fetching data:', error);
-                //     }
-                // },
+                async totalCost(input) {
+                    console.log("logger: ", input)
+                    try {
+                        let { data } = await window.facilioApp.request.invokeFacilioAPI(`/v3/unrelated/workorder/fetchAll/workorderService?moduleName=workorderService&viewName=all&filters=%7B%22parentId%22%3A%7B%22operatorId%22%3A9%2C%22value%22%3A%5B%22` + input + `%22%5D%7D%7D&page=1&perPage=5&force=false`, {
+                            method: 'GET'
+                        });
+                        if (data != null) {
+                            console.log("res", data);
+                            this.items = data.workorderService || [];
+                            console.log("items", this.items);
+                        }
+                    } catch(error) {
+                        console.error('Error fetching data:', error);
+                    }
+                },
 
                  async totalLabour(input) {
                     console.log("logger: ", input)
@@ -240,11 +240,11 @@
                             this.items2 = data.workorderCost || [];
                             console.log("items", this.items2);
                            
-                            // let serviceCostobject = data.workorderCost.find(costRecord => costRecord.costTypeEnum=="service" );
-                            // if (serviceCostobject!= null)
-                            // {
-                            //     this.serviceCost=serviceCostobject.cost;
-                            // }
+                            let serviceCostobject = data.workorderCost.find(costRecord => costRecord.costTypeEnum=="service" );
+                            if (serviceCostobject!= null)
+                            {
+                                this.serviceCost=serviceCostobject.cost;
+                            }
 
                             let labourCostobject=data.workorderCost.find(costRecord=> costRecord.costTypeEnum=="labour");
                             if (labourCostobject!=null)
