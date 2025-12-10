@@ -23,7 +23,7 @@
         <div class="spinner"></div> 
     </div>
  
-        <div v-else-if="items.length !=0 || items1.length !=0 || items3.length !=0  ">   
+        <div v-else-if="items1.length !=0 || items3.length !=0  ">   
         <!-- Service Cost Section -->
         <!-- <div v-if="items.length !== 0">
             <div class="headingvalues"><b>Service Cost</b></div>
@@ -142,7 +142,7 @@
     <div v-else >
 
         <div class="nodataimg" >
-            <img src="img.svg" class="image-nodata"/>
+            <img src="/img.svg" class="image-nodata"/>
             
         </div>
         <div class="bottomtext"> No Data Added Yet 
@@ -187,7 +187,7 @@
                     let workorderResponse = await window.facilioApp.api.fetchRecord("workorder", {id: data.context.id});
                     data.context = workorderResponse.workorder;
                     console.log('# workorderResponse: ', data.context);
-                    await this.totalCost(this.criteriaMap);
+                    // await this.totalCost(this.criteriaMap);
                     await this.totalLabour(this.criteriaMap);
                     await this.totalAmount (this.criteriaMap);
                     await this.totalMisc(this.criteriaMap);
